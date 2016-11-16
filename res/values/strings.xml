@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">台灣期貨未平倉查詢</string>
+    <string name="title_section1">選擇權</string>
+    <string name="title_section2">期貨</string>
+    <string name="title_section3">股票</string>
+    <string name="title_section4">大額交易人</string>
+    <string name="title_section5">期權資訊</string>
+    <string name="action_settings">Settings</string>
+	<string name="major_title_1">集中市場</string>
+	<string name="major_title_2">店頭市場</string>
+	<string name="credit_title_1">資券餘額</string>
+	<string name="credit_r_0">融資</string>
+	<string name="credit_r_1">融券</string>
+	<string name="credit_r_2">當沖</string>
+	<string name="credit_r_10">日期</string>
+	<string name="credit_r_11">增減(億)</string>
+	<string name="credit_r_12">餘額(億)</string>
+	<string name="credit_r_13">增減(張)</string>
+	<string name="credit_r_14">餘額(張)</string>
+	<string name="credit_r_15">增減(張)</string>
+	<string name="credit_r_16">餘額(張)</string>
+	<string name="major_r_0">法人</string>
+	<string name="major_r_1">買進</string>
+	<string name="major_r_2">賣出</string>
+	<string name="major_r_3">買賣超</string>
+	<string name="major_c_1">自營商</string>
+	<string name="major_c_2">投信</string>
+	<string name="major_c_3">外資</string>
+	<string name="major_c_4">總計</string>
+	<string name="p1_c_0">未平倉</string>
+	<string name="p1_c_1">買權</string>
+	<string name="p1_c_2">月份</string>
+	<string name="p1_c_3">賣權</string>
+	<string name="p1_c_4">未平倉</string>
+	<string name="today">今日</string>
+	<string name="pre_date">前一日</string>
+	<string name="next_date">後一日</string>
+	<string name="read_data_please_wait">資料讀取中,請稍後... </string>
+	<string name="data_date">日期:</string>
+	<string name="empty_data">無資料</string>
+	<string name="link_string"><u>投機交易評估問卷</u></string>
+	<string name="link_string_b">期貨預約服務</string>
+	<string name="network_error">網路不通,請稍後在試</string>
+	<string name="big_tail_text">( )所列數字，係部位排序前五大或前十大交易人中，屬於特定法人所持有之部位數量。 所謂特定法人，係依據本公司「法人機構申請避險帳戶從事期貨交易應行注意事項」第一點第二項規範， 包括證券商、外國機構投資人及陸資、證券投資信託基金、國家金融安定基金、公務人員退休撫卹基金、勞工退休基金、勞工保險基金、郵政儲金匯業局郵政資金、金融及保險機構及避險帳戶等。</string>
+</resources>

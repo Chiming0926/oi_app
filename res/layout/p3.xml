@@ -1,0 +1,115 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    		 android:layout_width="fill_parent"
+    		 android:layout_height="fill_parent">
+<TableLayout
+        android:id="@+id/t1"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_alignParentTop="true"
+    	android:layout_marginBottom="5dp"
+    	>
+		 <TableRow>
+			 <TextView
+			    android:id="@+id/date"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="3"
+			    android:layout_gravity="center"
+			    android:gravity="center"
+			    android:textAppearance="?android:attr/textAppearanceSmall"
+			    android:textStyle="bold"
+			    android:text="" />
+
+			<Button
+			    android:id="@+id/pre_btn"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/pre_date"
+			    android:layout_weight="1"
+			    style="@style/btnStyleBeige"
+			    android:layout_marginTop="2dp"
+			    android:onClick="onPreDateP3" />
+
+			<Button
+			    android:id="@+id/today_btn"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:onClick="onTodayP3"
+			    style="@style/btnStyleBeige"
+			    android:layout_marginLeft="2dp"
+			    android:layout_marginTop="2dp"
+			    android:text="@string/today" />
+
+			<Button
+			    android:id="@+id/next_btn"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:onClick="onNextDateP3"
+			    style="@style/btnStyleBeige"
+			    android:layout_marginLeft="2dp"
+			    android:layout_marginTop="2dp"
+			    android:text="@string/next_date" />
+
+			     </TableRow>
+			     
+	</TableLayout>
+
+<ScrollView 
+	android:layout_below="@+id/t1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    >
+	<LinearLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical">
+		    <TextView
+			    android:id="@+id/loading_title"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:textAppearance="?android:attr/textAppearanceMedium"
+			    android:text="@string/read_data_please_wait"
+			    android:gravity="center"
+			    android:layout_gravity="center"
+				android:visibility="gone"
+				/>
+		    <TableLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:id="@+id/tableBFI82U"
+			android:stretchColumns="*"
+			/>
+			<TableLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:id="@+id/tableT86"
+			android:stretchColumns="*"
+			android:layout_marginTop="10dp"/>
+		    <TableLayout 
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:id="@+id/tableP31"
+			android:stretchColumns="*"
+			android:layout_marginTop="10dp"
+			/>
+		    <TableLayout 
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:id="@+id/tableP32"
+			android:stretchColumns="*"
+			android:layout_marginTop="10dp"
+			android:layout_marginBottom="20dp"/>
+	</LinearLayout>
+ </ScrollView>
+    <TextView
+        android:layout_below="@+id/t1"
+	    android:id="@+id/status"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:textAppearance="?android:attr/textAppearanceMedium"
+	    android:gravity="center"
+	    android:layout_gravity="center"
+		android:visibility="gone"/>
+</RelativeLayout>

@@ -1,0 +1,113 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+    <TableLayout
+        android:id="@+id/t1"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_alignParentTop="true"
+    	>
+		 <TableRow>
+			 <TextView
+			    android:id="@+id/date"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="3"
+			    android:layout_gravity="center"
+			    android:gravity="center"
+			    android:textAppearance="?android:attr/textAppearanceSmall"
+			    android:textStyle="bold"
+			    android:text="" />
+
+			<Button
+			    android:id="@+id/pre_btn"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/pre_date"
+			    android:layout_weight="1"
+			    style="@style/btnStyleBeige"
+			    android:layout_marginTop="2dp"
+			    android:onClick="onPreDateF" />
+
+			<Button
+			    android:id="@+id/today_btn"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:onClick="onTodayF"
+			    style="@style/btnStyleBeige"
+			    android:layout_marginLeft="2dp"
+			    android:layout_marginTop="2dp"
+			    android:text="@string/today" />
+
+			<Button
+			    android:id="@+id/next_btn"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:onClick="onNextDateF"
+			    style="@style/btnStyleBeige"
+			    android:layout_marginLeft="2dp"
+			    android:layout_marginTop="2dp"
+			    android:text="@string/next_date" />
+
+			     </TableRow>
+			     
+	</TableLayout>
+	 <TextView
+	    android:id="@+id/link"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:gravity="center"
+	    android:textAppearance="?android:attr/textAppearanceLarge"
+	    android:text="@string/link_string"
+	    android:clickable="true"
+	    android:onClick="onClickLink"
+	    android:visibility="gone"/>
+	<ScrollView 
+	    android:id="@+id/t2"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@id/t1"
+	    android:layout_above="@+id/adb_btn"
+	    android:layout_marginTop="5dp"
+	    android:orientation="vertical">
+	    <TableLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:paddingBottom="20dp"
+	    android:id="@+id/future_table"
+		android:stretchColumns="*"/>
+	</ScrollView>
+		   <TextView
+			    android:id="@+id/no_data"
+			    android:layout_below="@id/t1"
+			    android:layout_above="@id/link"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:layout_gravity="center"
+			    android:gravity="center"
+			    android:textAppearance="?android:attr/textAppearanceMedium"
+			    android:text="@string/empty_data"
+			    android:visibility="gone" />
+		   
+		   	 <Button
+	    android:id="@+id/adb_btn"
+		android:layout_alignParentBottom="true"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:drawableLeft="@drawable/mute"
+		android:drawablePadding="10dip"
+		android:text="期貨選擇權\n                     誠徵客人"
+		android:textSize="30sp"
+		android:textColor="#ffffffff"
+		android:background="@drawable/button_orange"
+		android:gravity="center_vertical|left"
+		android:onClick="onClickBlog"
+		android:clickable="true"
+		android:padding="5dp"
+		android:visibility="gone"
+		/>
+ </RelativeLayout>
