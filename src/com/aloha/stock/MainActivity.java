@@ -45,7 +45,7 @@ import android.widget.TextView;
 
 public class MainActivity extends FragmentActivity implements
 		ActionBar.TabListener {
-	private final static boolean debug = false;
+	private final static boolean debug = true;
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -818,25 +818,25 @@ public class MainActivity extends FragmentActivity implements
 		String array1[] = {"臺指期","電子期","金融期","小臺指","台灣50","股票期","ETF期貨","櫃買期","非金電","東證期貨","期貨小計"};
 		String arrayT[] = {"本日淨交易(口)","淨未平倉(口)"};
 //		mFuDate.setText(mFutureDate.toDisplayString());
-//		Log.e("@@@@@@@", " updateFutureTable f = " + f + ", size = " + f.data.size());
+		Log.e("@@@@@@@", " updateFutureTable f = " + f + ", size = " + f.data.size());
 		if (f == null)
 		{
-			Log.e("@@@@@@@", "updateFutureTable 1");
 			mFuStatus.setVisibility(View.VISIBLE);
 			mFuStatus.setText(R.string.empty_data);
 			mFuTable.setVisibility(View.GONE);
 			return;
 		}
-		Log.e("@@@@@@@", "updateFutureTable 2");
 		int i = 0, j = 0;
         for (int k=0; k<f.data.size(); k++)
         {
         	_future future = f.data.get(k);
+        	
+        	Log.e("update future", "stringa = " + future.a + ", stringb = " + future.b + ", type = " + future.type);
         	if (i == 3)
         		i = 0;
         	if (i == 0)
         	{
-        		if (j > 10)
+        		if (j > 8)
             		break;
         		TableRow row = new TableRow(context);
         		TextView tv = new TextView(context);
@@ -867,7 +867,7 @@ public class MainActivity extends FragmentActivity implements
         	tv = new TextView(context);
         //	Log.e("future", "future.type = " + future.type + " j = " + j);
      //   	if (future.type == j-1)
-      //  		tv.setText(future.a);
+        		tv.setText(future.a);
       //  	else
        // 		tv.setText("0");
         	if (future.a.startsWith("-"))
@@ -878,7 +878,7 @@ public class MainActivity extends FragmentActivity implements
         	
         	tv = new TextView(context);
       //  	if (future.type == j-1)
-       // 		tv.setText(future.b);
+        		tv.setText(future.b);
        // 	else
       //  	{
        // 		tv.setText("0");
@@ -2278,10 +2278,11 @@ public class MainActivity extends FragmentActivity implements
 //				if (debug) Log.d("LAI","biggerThanToday, today:" + dh.toDisplayString());
 //				return null;
 //			}
-			
+			Log.e("@@@@@@@@@ ", "33322");
 			Future f = null;//(Future) mDM.getData("F", mFutureDate);
 			if(f == null || f != null && (f.data.size() == 0))
 			{
+			Log.e("@@@@@@@@@ ", "333");
 				if(!dh.hasNewData() && !mFutureDate.toString().equals(dh.toString()) && mFutureDate.getWeekDay() != 1 && mFutureDate.getWeekDay() != 7)
 				{
 					//do nothing
@@ -2304,7 +2305,9 @@ public class MainActivity extends FragmentActivity implements
 						if (debug) Log.d("LAI","gotoNextValidDay:" + mFutureDate.toDisplayString());
 					}
 				}
+				Log.e("@@@@@@@@@ ", "1111");
 				f = (Future) mDM.getData("F", mFutureDate);
+				Log.e("@@@@@@@@@ ", "2222");
 				if (f == null)
 				{
 					Log.e("@@@@@@@@@ ", " f 2310");	
