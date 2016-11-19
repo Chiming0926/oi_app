@@ -45,7 +45,7 @@ import android.widget.TextView;
 
 public class MainActivity extends FragmentActivity implements
 		ActionBar.TabListener {
-	private final static boolean debug = true;
+	private final static boolean debug = false;
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -561,6 +561,7 @@ public class MainActivity extends FragmentActivity implements
 	
 	public static void createT86Table(Context context, T86 t86)
 	{
+		/*
 		tableT86.removeAllViews();
 		
 		TableRow row = new TableRow(context);
@@ -658,7 +659,7 @@ public class MainActivity extends FragmentActivity implements
         	tableT86.addView(row);
         }
         
-        tableT86.setVisibility(View.VISIBLE);
+        tableT86.setVisibility(View.VISIBLE);*/
 	}
 	
 	//one column with yellow background
@@ -818,8 +819,8 @@ public class MainActivity extends FragmentActivity implements
 		String array1[] = {"臺指期","電子期","金融期","小臺指","台灣50","股票期","ETF期貨","櫃買期","非金電","東證期貨","期貨小計"};
 		String arrayT[] = {"本日淨交易(口)","淨未平倉(口)"};
 //		mFuDate.setText(mFutureDate.toDisplayString());
-		Log.e("@@@@@@@", " updateFutureTable f = " + f + ", size = " + f.data.size());
-		if (f == null)
+		
+		if (f == null || f.data.size() == 0)
 		{
 			mFuStatus.setVisibility(View.VISIBLE);
 			mFuStatus.setText(R.string.empty_data);
@@ -827,17 +828,14 @@ public class MainActivity extends FragmentActivity implements
 			return;
 		}
 		int i = 0, j = 0;
-        for (int k=0; k<f.data.size(); k++)
+        for (_future future:f.data)
         {
-        	_future future = f.data.get(k);
-        	
-        	Log.e("update future", "stringa = " + future.a + ", stringb = " + future.b + ", type = " + future.type);
+        	if (j > 10)
+        		break;
         	if (i == 3)
         		i = 0;
         	if (i == 0)
         	{
-        		if (j > 8)
-            		break;
         		TableRow row = new TableRow(context);
         		TextView tv = new TextView(context);
         		
@@ -865,11 +863,7 @@ public class MainActivity extends FragmentActivity implements
         	row.addView(tv);
         	
         	tv = new TextView(context);
-        //	Log.e("future", "future.type = " + future.type + " j = " + j);
-     //   	if (future.type == j-1)
-        		tv.setText(future.a);
-      //  	else
-       // 		tv.setText("0");
+        	tv.setText(future.a);
         	if (future.a.startsWith("-"))
         	{
         		tv.setTextColor(0xFF3CBD00);
@@ -877,13 +871,7 @@ public class MainActivity extends FragmentActivity implements
         	row.addView(tv);
         	
         	tv = new TextView(context);
-      //  	if (future.type == j-1)
-        		tv.setText(future.b);
-       // 	else
-      //  	{
-       // 		tv.setText("0");
-       // 		k--;
-      //  	}
+        	tv.setText(future.b);
         	if (future.b.startsWith("-"))
         	{
         		tv.setTextColor(0xFF3CBD00);
@@ -2261,12 +2249,9 @@ public class MainActivity extends FragmentActivity implements
 			{
 				mFuStatus.setVisibility(View.GONE);
 				mFuDate.setText(_activity.getString(R.string.data_date) + mFutureDate.toDisplayString());
-				if (f == null)
-					Log.e("@@@@", "f == null");
-				Log.e("@@@@", "f != null");
 				updateFutureTable(_activity, f, mFuTable);
 			}
-			if (debug) Log.d("LAI","-FutureTask()"); 
+			if (debug) Log.d("LAI","-FutureTask()");
 		}
 		@Override
 		protected Future doInBackground(Integer... params) {
@@ -2278,11 +2263,10 @@ public class MainActivity extends FragmentActivity implements
 //				if (debug) Log.d("LAI","biggerThanToday, today:" + dh.toDisplayString());
 //				return null;
 //			}
-			Log.e("@@@@@@@@@ ", "33322");
-			Future f = null;//(Future) mDM.getData("F", mFutureDate);
+			
+			Future f = (Future) mDM.getData("F", mFutureDate);
 			if(f == null || f != null && (f.data.size() == 0))
 			{
-			Log.e("@@@@@@@@@ ", "333");
 				if(!dh.hasNewData() && !mFutureDate.toString().equals(dh.toString()) && mFutureDate.getWeekDay() != 1 && mFutureDate.getWeekDay() != 7)
 				{
 					//do nothing
@@ -2299,29 +2283,18 @@ public class MainActivity extends FragmentActivity implements
 						mFutureDate.gotoNextValidDay();
 						if (biggerThanToday(mFutureDate))
 						{
-							Log.e("@@@@@@@@@ ", " f return null");
 							return null;
 						}
 						if (debug) Log.d("LAI","gotoNextValidDay:" + mFutureDate.toDisplayString());
 					}
 				}
-				Log.e("@@@@@@@@@ ", "1111");
 				f = (Future) mDM.getData("F", mFutureDate);
-				Log.e("@@@@@@@@@ ", "2222");
 				if (f == null)
 				{
-					Log.e("@@@@@@@@@ ", " f 2310");	
 					if (mUtils.isOnline(_activity))
 					{
-						Log.e("@@@@@@@@@ ", " f 2313");
 						mDM.fetchData("F", mFutureDate);
-						Log.e("@@@@@@@@@ ", " f 2315");
 						f = (Future) mDM.getData("F", mFutureDate);
-						Log.e("@@@@@@@@@ ", " f 2317");
-						if (f == null)
-							Log.e("@@@@@@@@@ ", " f is 2319");
-						else
-							Log.e("@@@@@@@@@ ", " f is 2321 ");
 					}
 					else
 					{
@@ -2331,10 +2304,6 @@ public class MainActivity extends FragmentActivity implements
 				}
 			}
 			// TODO Auto-generated method stub
-			if (f == null)
-				Log.e("@@@@@@@@@ ", " f is null ");
-			else
-				Log.e("@@@@@@@@@ ", " f is good ");
 			return f;
 		}
 	}

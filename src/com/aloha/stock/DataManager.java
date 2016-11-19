@@ -293,7 +293,6 @@ public class DataManager{
 			}
 			else if (mode.equals("T86"))
 			{
-				Log.e("test", "@@@@@@ 283");
 				T86 bf = getT86(dh);
 				if (bf != null)
 				{
@@ -472,7 +471,6 @@ public class DataManager{
 			else if(page.startsWith("F"))
 			{
 				String key = page + date.toString();
-				Log.e("@@@ get", "key = " + key);
 				Future f = futureMap.get(key);
 				if (f == null)
 				{
