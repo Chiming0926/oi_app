@@ -2421,4 +2421,29 @@ public class MainActivity extends FragmentActivity implements
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void onDownLoadAppTextClick(View v)
+	{
+		try 
+		{
+		    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + "com.concords.Futures.onlineacct&hl=zh_TW")));
+		} 
+		catch (android.content.ActivityNotFoundException anfe) 
+		{
+		    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + "com.concords.Futures.onlineacct&hl=zh_TW")));
+		}
+	}
+	
+	public void onDownLoadMunualTextClick(View v)
+	{
+		try 
+		{
+		    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + "com.appmk.magazine.AOSZBBKIOVVHVSJ&hl=zh_TW")));
+		} 
+		catch (android.content.ActivityNotFoundException anfe) 
+		{
+		    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + "com.appmk.magazine.AOSZBBKIOVVHVSJ&hl=zh_TW")));
+		}
+	}
 }
+

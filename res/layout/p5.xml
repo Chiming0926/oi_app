@@ -13,10 +13,9 @@
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 		    android:layout_gravity="center"
-		    android:gravity="center"
 		    android:textColor="#1010FF"
 		    android:textSize="64px"
-		    android:text="本軟體功能服務 \n 由康和期貨 陳先生 \n 提供贊助 \n 歡迎來電諮詢  "
+		    android:text="本軟體功能服務 , 由康和期貨陳彥鈞提供贊助 , 如有期貨相關問題或開戶服務, 歡迎來電諮詢 "
 		    android:textAppearance="?android:attr/textAppearanceMedium" />
 			
 			
@@ -39,11 +38,9 @@
 		<TextView 
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:layout_gravity="center"
-		    android:gravity="center"
 		    android:textColor="#1010FF"
 		    android:textSize="64px"
-		    android:text="歡迎下載使用 \n 康和期貨線上APP \n 以及相關之操作說明APP "
+		    android:text="歡迎下載使用 , 康和期貨線上APP, 以及相關之操作說明APP "
 		    android:textAppearance="?android:attr/textAppearanceMedium" />
         <ImageView
 		    android:id="@+id/related_app"
@@ -52,6 +49,25 @@
 	        android:layout_gravity="center"
 		    android:gravity="center"
 	        android:src="@drawable/related_app" />
+		<TextView 
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:textColor="#FF0000"
+		    android:textSize="64px"
+		    android:clickable="true"
+		    android:onClick="onDownLoadAppTextClick"
+		    android:text="下載  線上開戶APP"
+		    android:textAppearance="?android:attr/textAppearanceMedium" />
+        <TextView 
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:textColor="#FF0000"
+		    android:textSize="64px"
+		    android:text="下載 線上開戶使用手冊"
+		    android:clickable="true"
+		    android:onClick="onDownLoadMunualTextClick"
+		    android:textAppearance="?android:attr/textAppearanceMedium" />
+		
         <TextView
 	    	    android:id="@+id/div4"
 			    android:layout_above="@+id/related_app"

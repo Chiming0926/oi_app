@@ -326,7 +326,7 @@ public class DataManager{
 					futureMap.put(mode + f.date, f);
 					return f.date;
 				}
-				
+				 
 				String words[] = _date.substring(_date.indexOf("期")+1).split("/");
 				String m = words[1];
 				String d = words[2];
@@ -343,19 +343,15 @@ public class DataManager{
 					words = element.text().split(" ");
 					_future future = new _future();
 					
-					for (int i=0; i<words.length; i++)
-						Log.e("@@@@ word", "word[" + i + "]=" + words[i]);
 					if (words.length == 13)
 					{
 						if (words[0].contains("計"))
 						{
 							f.total1 = words[5];
 							f.total2 = words[11];
-							Log.e("words.length == 13 計", "words[5] = " + words[5] + ", words[11] = " + words[11]);
 						}
 						else
 						{
-							Log.e("words.length == 13 ", "words[5] = " + words[5] + ", words[11] = " + words[11]);
 							future.a = words[5];
 							future.b = words[11];
 							future.type = data_id;
@@ -364,7 +360,6 @@ public class DataManager{
 					}
 					else if (words.length == 16)
 					{
-						Log.e("words.length == 16", "words[1] = " + words[1] + ", words[8] = " + words[8] + ",words[14] = " + words[14]);
 						data_id = get_id(words[1]);
 //						future.a = words[7];
 //						future.b = words[13];
@@ -377,7 +372,6 @@ public class DataManager{
 					}
 					else if (words.length == 15)
 					{
-						Log.e("words.length == 15", "words[0] = " + words[0] + ", words[7] = " + words[7] + ",words[13] = " + words[13]);
 						data_id = get_id(words[0]);
 						future.a = words[7];
 						future.b = words[13];
@@ -386,7 +380,6 @@ public class DataManager{
 					}
 					else if (words.length == 17)
 					{
-						Log.e("words.length == 17", "words[1] = " + words[1] + ", words[9] = " + words[9] + ",words[15] = " + words[15]);
 						data_id = get_id(words[1]);
 //						future.a = words[7];
 //						future.b = words[13];
@@ -399,7 +392,6 @@ public class DataManager{
 					}
 				}
 				//_activity.mUtils.saveData(f, FUTURE_PATH , mode + f.date);
-				Log.e("@@@ put", "mode + f.date = " + mode + f.date);
 				futureMap.put(mode + f.date, f);
 				return f.date;
 			}
