@@ -515,7 +515,7 @@ public class DataManager{
 				if(dh.hasNewData())//after 3pm
 				{
 					if (debug) Log.d("LAI", "after 3pm!");
-					stock = (Stock) _activity.mUtils.loadData(STOCK_PATH, "stock");
+					stock = null;//(Stock) _activity.mUtils.loadData(STOCK_PATH, "stock");
 					if (stock != null && stock.year != null && stock.month != null && stock.date != null)
 					{
 						String _date = stock.year + stock.month + stock.date;
@@ -571,10 +571,25 @@ public class DataManager{
 	private BFI82U getBFI82U(DateHelper dh)
 	{
 		BFI82U data = new BFI82U();
+
+		String year = String.valueOf(dh.getYear());
+		String month = String.valueOf(dh.getMonth());
+		String day = String.valueOf(dh.getDay());
+		String qdate = String.valueOf(dh.getYear()-1911)+"/"+month+"/"+day;
+		String query_week = String.valueOf(dh.getYear()) + String.valueOf(dh.getMonth()) + "26";
+		Log.e("getBFI82U","+getBFI82U() " + " y:" + year + " m:"+ month + " d:" + day + " qdate:"+qdate + " query_week:" + query_week); 
+		
+			
 		Document doc = null;
 		try {
 			doc = Jsoup.connect("http://www.twse.com.tw/ch/trading/fund/BFI82U/BFI82U.php")
-				    .data("input_date", dh.toChineseDisplayString())
+					.data("download", "")
+					.data("queryDWM", "by_issueD")
+				    .data("qdate", qdate)
+				    .data("query_yearW", year)
+				    .data("query_week", query_week)
+				    .data("query_yearM", year)
+				    .data("query_monthM", month)
 				    .timeout(5000)
 				    .post();
 		} catch (IOException e) {
@@ -593,18 +608,20 @@ public class DataManager{
 		/*
 		 * get elements
 		 */
-		Elements elements1 = doc.select("td[class$=basic2]");
+		Elements elements1 = doc.select("td");
 		if (elements1.isEmpty())
+		{
 			return null;
-		
+		}
+		for (int i=0; i<elements1.size(); i++)
+			Log.e("", "elements1 = " + elements1.get(i).text());
 		for (int i = 0; i < 5 ;i ++)
 		{
 			for(int j = 0; j < 3 ;j ++)
 			{
-				data.row[i][j] = toE(elements1.get(i*3 + j).text());
+				data.row[i][j] = toE(elements1.get(i*4 + j + 6).text());
 			}
 		}
-		
 		data.date = dh.toDisplayString();
 		_activity.mUtils.saveData(data, BFI82U_PATH, dh.toDisplayString().replace("/", ""));
 		return data;
@@ -612,6 +629,7 @@ public class DataManager{
 	
 	private String toE(String value)
 	{
+		Log.e("", "toE String = " + value);
 		boolean negitive = false;
 		if (value.startsWith("-"))
 		{
