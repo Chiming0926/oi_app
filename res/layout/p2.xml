@@ -90,6 +90,7 @@
 			    android:layout_gravity="center"
 			    android:gravity="center"
 			    android:textAppearance="?android:attr/textAppearanceMedium"
+			    android:textSize="30sp"
 			    android:text="@string/empty_data"
 			    android:visibility="gone" />
 		   

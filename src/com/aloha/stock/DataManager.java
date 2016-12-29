@@ -300,7 +300,7 @@ public class DataManager{
 				}
 			}
 			else
-			{			
+			{
 				Log.e("@@@@@@@@", "test  future12322" + ", y=" + year + " , m=" + month + " , day=" + day);
 				String _date_ = year + "/" + month + "/" + day;
 				doc = Jsoup.connect("http://www.taifex.com.tw/chinese/3/7_12_3.asp")
@@ -320,6 +320,7 @@ public class DataManager{
 				try{
 					_date = doc.select("p.clearfix").first().text();
 				}catch(Exception e){
+					Log.e("", "Can't get data");
 					//no data at the day
 					f.date = year + month + day;
 					_activity.mUtils.saveData(f, FUTURE_PATH , mode + year + month + day);
@@ -330,13 +331,14 @@ public class DataManager{
 				String words[] = _date.substring(_date.indexOf("期")+1).split("/");
 				String m = words[1];
 				String d = words[2];
-				if (m.length()==1)
-					m = "0" + m;
+				if (month.length()==1)
+					month = "0" + month;
 				
-				if (d.length()==1)
-					d = "0" + d;
+				if (day.length()==1)
+					day = "0" + day;
 					
 				f.date = year + month + day;
+				Log.e("", "fdate = " + f.date);
 				int data_id = 0;	
 				Elements elements = doc.select("tr.12bk");
 				for (Element element : elements) {
@@ -388,7 +390,7 @@ public class DataManager{
 						future.a = words[9];
 						future.b = words[15];
 						future.type = data_id;		
-						f.data.add(future);
+		 				f.data.add(future);
 					}
 				}
 				//_activity.mUtils.saveData(f, FUTURE_PATH , mode + f.date);
@@ -732,7 +734,10 @@ public class DataManager{
 		stock.major_r[3][1] = String.format("%.02f", Float.parseFloat(stock.major_r[0][1]) +
 											Float.parseFloat(stock.major_r[1][1]) +
 											Float.parseFloat(stock.major_r[2][1]));
-
+		Log.e("","@@@@@ stock.major_r[0][1]" + stock.major_r[0][1]);
+		Log.e("","@@@@@ stock.major_r[1][1]" + stock.major_r[1][1]);
+		Log.e("","@@@@@ stock.major_r[2][1]" + stock.major_r[2][1]);
+		
 		//店頭
 		elements2 = elements1.get(1).select("td[align$=CENTER]");
 		stock.major2_r[0][1] = elements2.get(2).text();
