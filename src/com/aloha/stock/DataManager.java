@@ -578,7 +578,7 @@ public class DataManager{
 		String month = String.valueOf(dh.getMonth());
 		String day = String.valueOf(dh.getDay());
 		String qdate = String.valueOf(dh.getYear()-1911)+"/"+month+"/"+day;
-		String query_week = String.valueOf(dh.getYear()) + String.valueOf(dh.getMonth()) + "26";
+		String query_week = "20161226";
 		Log.e("getBFI82U","+getBFI82U() " + " y:" + year + " m:"+ month + " d:" + day + " qdate:"+qdate + " query_week:" + query_week); 
 		
 			
