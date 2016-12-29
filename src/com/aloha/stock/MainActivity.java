@@ -351,6 +351,8 @@ public class MainActivity extends FragmentActivity implements
 			protected Void doInBackground(Void... params) {
 				// TODO Auto-generated method stub
 				stock =  (Stock)mDM.getData("STOCK", null);
+				if (stock == null)
+					Log.e("", "@@@@@@@@@@@ stock null");
 				return null;
 			}
 
@@ -361,9 +363,10 @@ public class MainActivity extends FragmentActivity implements
 				tableP32.removeAllViews();
 				if (stock == null)
 				{
+					Log.e("", "@@@@@@@@@@@ 111");
 					return;
 				}
-
+				Log.e("", "@@@@@@@@@@@ 222");
 				//店頭市場
 		        addRowP3(_activity,
 		        		_activity.getString(R.string.data_date) +
@@ -2091,16 +2094,20 @@ public class MainActivity extends FragmentActivity implements
 			// TODO Auto-generated method stub
 			super.onPostExecute(f);
 			mLoadTitleP3.setVisibility(View.GONE);
+			Log.e("", "@@@@@@@@@@@@@ BFI82UTask  111");
 			if (bNetworkError)
 			{
+				Log.e("", "@@@@@@@@@@@@@ BFI82UTask  222");
 				showP3NetworkError();
 			}
 			else
 			{
+				Log.e("", "@@@@@@@@@@@@@ BFI82UTask  333");
 				dateP3.setText(_activity.getString(R.string.data_date) + mBFI82UDate.toDisplayString());
 				
 				if (f != null && f.date != null &&!f.date.isEmpty())
 				{
+					Log.e("", "@@@@@@@@@@@@@ BFI82UTask  444");
 					createBFI82UTable(_activity, f);
 				}
 				new T86Task().execute(0);
@@ -2145,13 +2152,16 @@ public class MainActivity extends FragmentActivity implements
 						if (debug) Log.d("BFI82U","gotoNextValidDay:" + mBFI82UDate.toDisplayString());
 					}
 				}
-				f = (BFI82U) mDM.getData("BFI82U", mBFI82UDate);
+				f = null;//(BFI82U) mDM.getData("BFI82U", mBFI82UDate);
 				if (f == null)
 				{
 					if (mUtils.isOnline(_activity))
 					{
+						Log.e("", "mDM.fetchData(\"BFI82U\", mBFI82UDate)");
 						mDM.fetchData("BFI82U", mBFI82UDate);
 						f = (BFI82U) mDM.getData("BFI82U", mBFI82UDate);
+						if (f == null)
+							Log.e("", "mDM.fetchData(\"BFI82U\", mBFI82UDate) 222");
 					}
 					else
 					{
